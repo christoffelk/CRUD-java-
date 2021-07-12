@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+<link rel="stylesheet"
+ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+ crossorigin="anonymous">
+ <style>
+ a{
+    text-decoration: none;
+}
+body{
+    background: -webkit-linear-gradient(bottom,#702822,#b34233,#f18e3f,#ffcd73);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+label{
+    font-family: "Raleway",sans-serif;
+    font-size: 11pt;
+}
+#card{
+    background: #ffffff;
+    border-radius:  8px;
+    box-shadow: 1px 2px 8px rgba(0,0,0,0.65);
+    height: 450px;
+    margin: 6rem auto 8.1rem auto;
+    width: 329px;
+}
+#isi-card{
+    padding: 12px 44px;
+}
+#card-title{
+    font-family: "Raleway Thin",sans-serif;
+    letter-spacing: 4px;
+    padding-bottom: 23px;
+    padding-top: 13px;
+    text-align: center;
+}
+#signup{
+    color: #000080;
+    font-family: "Raleway",sans-serif;
+    font-size: 10pt;
+    margin-top: 16px;
+    text-align: center;
+}
+#submit-btn{
+    background: -webkit-linear-gradient(bottom,#ffbd00,#8b0000);
+    border-radius: 21px;
+    border: none;
+    box-shadow: 0px 1px 8px #808080;
+    cursor: pointer;
+    color: white;
+    font-family: "Raleway SemiBold",sans-serif;
+    height: 42.3px;
+    margin: 0 auto;
+    margin-top: 30px;
+    transition: 0.5s;
+    width: 170px;
+}
+#submit-btn:hover{
+    box-shadow: 0px 1px 18px #ffffff;
+}
+.form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.form-content{
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+    padding: 8px;
+}
+.form-content:hover{
+    box-shadow: 1.5px 1.5px 1.5px 1.5px #A099FF;
+}
+.underline-title{
+    background: -webkit-linear-gradient(bottom,#3498db,#9b59b6);
+    height: 2px;
+    margin:-1.1rem auto 0 auto;
+    widows: 89px;
+}
+ </style>
+</head>
+<body>
+
+ <!-- create navigation bar ( header) -->
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+   <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed"
+     data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+     aria-controls="navbar">
+     <span class="sr-only">Toggle navigation</span> <span
+      class="icon-bar"></span> <span class="icon-bar"></span> <span
+      class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#" th:href="@{/}">Registration and
+     Login </a>
+   </div>
+  </div>
+ </nav>
+
+<br>
+<br>
+ <!-- Create HTML registration form -->
+ <div id="card">
+  <div id="isi-card">
+   <div id="card-title">
+		<h2>Login</h2>
+		<div class="underline-title">
+		</div>
+   </div>
+    <!-- success message -->
+    <div th:if="${param.success}">
+     <div class="alert alert-info">You've successfully registered
+      to our awesome app!</div>
+    </div>
+	
+    <form class="form" th:action="@{/login}" method="post">
+     
+     <!-- error message -->
+     <div th:if="${param.error}">
+      <div class="alert alert-danger">Invalid username or
+       password.</div>
+     </div>
+    
+     <!-- logout message -->
+     <div th:if="${param.logout}">
+      <div class="alert alert-info">You have been logged out.</div>
+     </div>
+     
+     
+      <label for="username" style="padding: 8px 0 8px 0">&nbsp;
+                        Username
+                    </label>
+      <input type="text" class = "form-content" id ="username" name = "username"
+      placeholder="Enter Email ID" autofocus="autofocus">
+    
+     
+    
+     <label for="user-password" style="padding: 8px 0 8px 0">&nbsp; 
+                        Password
+                    </label> 
+          <input type="password"
+       id="user-password" name="password" class="form-content"
+       placeholder="Enter Password" />
+     
+     
+     
+        <input type="submit" name="login-submit" id="submit-btn"
+         class="form-control btn btn-primary" value="Log In" />
+       
+       <label style="padding: 8px 0 8px 0">New user? <a href="/" id="signup" th:href="@{/registration}">Register here</a></label>
+    </form>
+   </div>
+ </div>
+</body>
+</html>

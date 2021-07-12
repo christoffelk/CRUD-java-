@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Mahasiswa Management</title>
+
+<link rel="stylesheet" 
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+	crossorigin="anonymous">
+
+<style>
+a{
+    text-decoration: none;
+}
+body{
+    background: -webkit-linear-gradient(bottom,#702822,#b34233,#f18e3f,#ffcd73);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center
+}
+label{
+    font-family: "Raleway",sans-serif;
+    font-size: 11pt;
+}
+#card{
+    background: #ffffff;
+    border-radius:  10px;
+    box-shadow: 1px 2px 8px rgba(0,0,0,0.65);
+    height: 530px;
+    margin: 6rem auto 8.1rem auto;
+    width: 329px;
+}
+#isi-card{
+    padding: 12px 44px;
+}
+#card-title{
+    font-family: "Raleway Thin",sans-serif;
+    letter-spacing: 4px;
+    padding-bottom: 23px;
+    padding-top: 13px;
+    text-align: center;
+}
+#signup{
+    color: #000080;
+    font-family: "Raleway",sans-serif;
+    font-size: 10pt;
+    margin-top: 16px;
+    text-align: center;
+}
+#submit-btn{
+    background: -webkit-linear-gradient(bottom,#ffbd00,#8b0000);
+    border-radius: 21px;
+    border: none;
+    box-shadow: 0px 1px 8px #808080;
+    cursor: pointer;
+    color: white;
+    font-family: "Raleway SemiBold",sans-serif;
+    height: 42.3px;
+    margin: 0 auto;
+    margin-top: 30px;
+    transition: 0.5s;
+    width: 170px;
+}
+#submit-btn:hover{
+    box-shadow: 0px 1px 18px #ffffff;
+}
+.form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.form-border{
+    height: 1px;
+    width: 150px;
+    margin-top: 8px;
+    background: -webkit-linear-gradient(bottom,#3498db,#9b59b6);
+}
+.form-content{
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+    padding: 8px;
+}
+.form-content:hover{
+    box-shadow: 1.5px 1.5px 1.5px 1.5px #A099FF;
+}
+.underline-title{
+    background: -webkit-linear-gradient(bottom,#3498db,#9b59b6);
+    height: 2px;
+    margin:-1.1rem auto 0 auto;
+    widows: 89px;
+}
+</style>
+</head>
+<body>
+	<div id="card">
+	<div id="isi-card">
+	<div id="card-title">
+		
+		<h2> Update buku</h2>
+		<br>
+		<div class="underline-title">
+		</div>
+	</div>
+		<form action="#" th:action="@{/book/saveBuku}" th:object="${buku}" method="POST" class="form">
+			<input type="hidden" th:field="*{id}"/>
+			<input type="text" th:field="*{name}" placeholder="Judul Buku" class="form-content">
+			<br>
+			<input type="text" th:field="*{pengarang}" style="margin-bottom: 10px" class="form-content" placeholder="Nama Pengarang" >
+			<br>
+			<input type="text" th:field="*{penerbit}" style="margin-bottom: 10px" class="form-content" placeholder="Nama Penerbit" >
+			<br>
+			<input type="text" th:field="*{tahunterbit}" style="margin-bottom: 10px" class="form-content" placeholder="Tahun terbit">
+			<br>
+			<button id="submit-btn" type="submit" >Update Data Buku</button>
+		</form>
+		
+		<hr>
+
+        <a th:href="@{/book}"> Back to  List</a>
+			
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Mahasiswa Management</title>
+<link rel="stylesheet" 
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+	crossorigin="anonymous">
+
+<style>
+a{
+    text-decoration: none;
+}
+body{
+    background: -webkit-linear-gradient(bottom,#702822,#b34233,#f18e3f,#ffcd73);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center
+}
+label{
+    font-family: "Raleway",sans-serif;
+    font-size: 11pt;
+}
+#card{
+    background: #ffffff;
+    border-radius:  10px;
+    box-shadow: 1px 2px 8px rgba(0,0,0,0.65);
+    height: 750px;
+    margin: 6rem auto 8.1rem auto;
+    width: 900px;
+}
+#isi-card{
+    padding: 12px 44px;
+}
+#card-title{
+    font-family: "Raleway Thin",sans-serif;
+    letter-spacing: 4px;
+    padding-bottom: 23px;
+    padding-top: 13px;
+    text-align: center;
+}
+#signup{
+    color: #000080;
+    font-family: "Raleway",sans-serif;
+    font-size: 10pt;
+    margin-top: 16px;
+    text-align: center;
+}
+#submit-btn{
+    background: -webkit-linear-gradient(bottom,#ffbd00,#8b0000);
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 1px 8px #808080;
+    cursor: pointer;
+    color: white;
+    font-family: "Raleway SemiBold",sans-serif;
+    height: 35px;
+    margin: 0 auto;
+    margin-top: 10px;
+    transition: 0.5s;
+    width: 120px;
+    text-align: center;
+}
+#submit-btn-action{   
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 1px 8px #808080;
+    cursor: pointer;
+    color: white;
+    font-family: "Raleway SemiBold",sans-serif;
+    height: 35px;
+    margin: 0 auto;
+    margin-right: 5px;
+    transition: 0.5s;
+    width: 60px;
+    text-align: center;
+}
+.update{
+    background: -webkit-linear-gradient(bottom,#00ff00,#008000);
+    
+}
+.delete{
+    background: -webkit-linear-gradient(bottom,#ff0000,#8b0000);
+}
+#submit-btn:hover{
+    box-shadow: 0px 1px 18px #ffffff;
+}
+.underline-title{
+    background: -webkit-linear-gradient(bottom,#3498db,#9b59b6);
+    height: 2px;
+    margin:-1.1rem auto 0 auto;
+    widows: 89px;
+}
+th, td{
+    text-align: center;
+}
+#kotak{
+    border-collapse: collapse;
+    font-family: "Raleway",sans-serif;
+    width: 100%;
+    margin-top: 20px;
+}
+#kotak td, #kotak th{
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+a{
+	padding-top:4px;
+}
+</style>
+</head>
+<body>
+<a th:href="@{/}">Back to Home</a>	
+<div id = "card">
+<div id ="isi-card">
+<div id="mahasiswa-list">
+	<h2>Shift List</h2>
+	<br>
+	<div class="underline-title">                   
+                    </div>
+	<a type="submit"  th:href= "@{/shift/showNewShiftForm}" id="submit-btn">Add Shift</a>
+	<table border="1" id="kotak">
+		<thead>
+			<tr> 
+				<th> Nama Penjaga1</th>
+				<th> Nama Penjaga2</th>
+				<th> Keterangan</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="shift:${ListShift}">
+				<td th:text="${shift.penjaga1}"></td>
+				<td th:text="${shift.penjaga2}"></td>
+				<td th:text="${shift.keterangan}"></td>
+				<td> <a th:href= "@{/shift/showFormForUpdateshift/{id}(id=${shift.id})}" type="submit"  class="update" id="submit-btn-action">Update</a>
+				<a th:href= "@{/shift/deleteShift/{id}(id=${shift.id})}" class="delete" id="submit-btn-action" type="submit" >Delete</a> </td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>
+</div>
+</body>
+</html>
